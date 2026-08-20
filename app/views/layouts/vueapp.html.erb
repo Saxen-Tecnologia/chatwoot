@@ -33,6 +33,7 @@
     <script>
       window.chatwootConfig = {
         hostURL: '<%= ENV.fetch('FRONTEND_URL', '') %>',
+        crmOrigin: '<%= ENV.fetch('TS_CRM_ORIGIN', '') %>',
         helpCenterURL: '<%= ENV.fetch('HELPCENTER_URL', '') %>',
         fbAppId: '<%= @global_config['FB_APP_ID'] %>',
         instagramAppId: '<%= @global_config['INSTAGRAM_APP_ID'] %>',
