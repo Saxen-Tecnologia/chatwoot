@@ -38,7 +38,7 @@
    Do instead: resolver tenant por credenciais e mapeamentos confiáveis; manter os workflows de TS Products inativos até prompt, conhecimento e aceite próprios estarem aprovados.
 
 2. **[2026-08-26] Distinguir silêncio por handoff de falha operacional**
-   Do instead: quando não houver resposta da IA, consultar `ai_interactions`; decisão `handoff` com `replyRecorded=false` é o comportamento fail-closed esperado para preço, estoque e outras intenções comerciais até o F10 existir, portanto não reenviar o job.
+   Do instead: quando não houver resposta da IA, consultar `ai_interactions`; decisão `handoff` sem resposta pública é o comportamento fail-closed esperado, mas `handoff_applied_at IS NULL` exige retomada F10 do mesmo job antes do guard de atendimento humano.
 
 3. **[2026-08-26] Não confiar em identidade fornecida pelo webhook**
    Do instead: validar a instância UAZAPI contra `tenant_integrations`; diante de `UAZAPI_MAPPING_CONFLICT`, comprovar a identidade pelas mensagens e garantir que ela não pertence a outro tenant antes da RPC.
