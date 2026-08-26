@@ -119,3 +119,30 @@ Practical checklist for any change impacting core logic or public APIs
 ## Branding / White-labeling note
 
 - For user-facing strings that currently contain "Chatwoot" but should adapt to branded/self-hosted installs, prefer applying `replaceInstallationName` from `shared/composables/useBranding` in the UI layer (for example tooltip and suggestion labels) instead of adding hardcoded brand-specific copy.
+
+## TS Products CRM Operations And Continuity
+
+- This repository is the Chatwoot fork. The sibling repository
+  `../ts-products-crm` is the source for the CRM backend, Supabase migrations,
+  n8n workflows, AI prompts, infrastructure evidence, and the operational
+  recovery runbook at `docs/operations/recovery-runbook.md`.
+- Use Infisical Secrets Management as the source of truth for project secrets.
+  Keep `.env.local` ignored with permission `600`; inject secrets with
+  `infisical run` or export directly to the ignored file without printing
+  values to the terminal.
+- MCP capabilities may be installed globally, but endpoints, project IDs,
+  environments, authorization, and secret-variable names are configured per
+  repository. Never place project credentials in global versioned config.
+- Preserve strict tenant isolation: Redmoto and TS Products have separate
+  Chatwoot accounts, mappings, n8n workflows, and credentials. TS Products AI
+  remains inactive until its own prompt, knowledge, and acceptance are ready.
+- After reconnecting the free UAZAPI instance, assume the token, webhook, and
+  provider identity may have changed. Resynchronize the Infisical/n8n token,
+  restore the webhook, verify the audited Supabase mapping, and run the complete
+  UAZAPI -> n8n -> backend -> Chatwoot -> Gemini -> UAZAPI smoke test.
+- F09 n8n workers intentionally do not retain execution payloads. Diagnose AI
+  processing through the sanitized Supabase `ai_interactions` and
+  `outbox_messages` ledgers.
+- Read and curate `.codex/napkin.md` at the beginning of every session. Keep it
+  as a concise recurring runbook with dated `Do instead:` actions, not a
+  chronological activity log.
