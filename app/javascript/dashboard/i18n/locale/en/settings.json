@@ -314,6 +314,7 @@
     "INBOX_VIEW": "Inbox View",
     "CONVERSATIONS": "Conversations",
     "INBOX": "My Inbox",
+    "KANBAN": "Sales pipeline",
     "ALL_CONVERSATIONS": "All Conversations",
     "MENTIONED_CONVERSATIONS": "Mentions",
     "PARTICIPATING_CONVERSATIONS": "Participating",
@@ -415,6 +416,14 @@
     "SECURITY": "Security",
     "CAPTAIN_AI": "Captain",
     "CONVERSATION_WORKFLOW": "Conversation Workflow"
+  },
+  "KANBAN": {
+    "CONNECTING": "Connecting to the sales pipeline...",
+    "ERROR_TITLE": "Sales pipeline unavailable",
+    "ERROR_MESSAGE": "Check the integration configuration and try again.",
+    "FRAME_TITLE": "Sales pipeline — account {accountId}",
+    "SECURE_SESSION_ERROR": "The sales pipeline could not establish a secure session.",
+    "RETRY": "Try again"
   },
   "DATA_IMPORTS": {
     "HEADER": "Data",
