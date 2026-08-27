@@ -14,6 +14,7 @@ import Suspended from './suspended/Index.vue';
 import NoAccounts from './noAccounts/Index.vue';
 import OnboardingAccountDetails from './onboarding/Index.vue';
 import OnboardingInboxSetup from './onboarding/InboxSetup.vue';
+import { routes as kanbanRoutes } from './kanban/kanban.routes';
 
 export default {
   routes: [
@@ -23,6 +24,7 @@ export default {
       children: [
         ...captainRoutes,
         ...inboxRoutes,
+        ...kanbanRoutes,
         ...conversation.routes,
         ...settings.routes,
         ...callRoutes,

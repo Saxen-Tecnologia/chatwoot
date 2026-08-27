@@ -61,6 +61,11 @@ const backButtonUrl = computed(() => {
   });
 });
 
+const kanbanRoute = computed(() => ({
+  name: 'kanban_index',
+  params: { accountId: accountId.value },
+}));
+
 const isHMACVerified = computed(() => {
   if (!isAWebWidgetInbox.value) {
     return true;
@@ -173,6 +178,14 @@ const copyConversationId = async () => {
         class="hidden md:flex"
       />
       <ConversationCallButton :inbox="inbox" :chat="currentChat" />
+      <RouterLink
+        v-tooltip.top="$t('CONVERSATION.HEADER.OPEN_KANBAN')"
+        :to="kanbanRoute"
+        class="grid place-content-center size-8 rounded-lg text-n-slate-11 hover:bg-n-alpha-2"
+        :aria-label="$t('CONVERSATION.HEADER.OPEN_KANBAN')"
+      >
+        <span class="i-lucide-columns-3 size-4" aria-hidden="true" />
+      </RouterLink>
       <MoreActions :conversation-id="currentChat.id" />
     </div>
   </div>

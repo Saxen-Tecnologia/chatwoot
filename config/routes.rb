@@ -51,6 +51,7 @@ Rails.application.routes.draw do
         end
 
         scope module: :accounts do
+          resource :kanban_embed_session, only: [:create]
           namespace :actions do
             resource :contact_merge, only: [:create]
           end
