@@ -18,6 +18,9 @@
 3. **[2026-08-26] Separar o fork Chatwoot do backend de orquestração**
    Do instead: tratar este repositório como o fork Chatwoot e usar o repositório irmão `../ts-products-crm` para backend, migrations, workflows n8n, prompts e runbooks operacionais.
 
+4. **[2026-09-02] Manter a navegação do iframe presa à conta autenticada**
+   Do instead: ao aceitar ações `postMessage` do Kanban, validar origem exata, `event.source` e tipo do identificador; usar sempre `route.params.accountId` do host. Para `ts-products.crm.open-contact.v1`, aceitar somente `contactId` e navegar para `contacts_edit`, nunca aceitar conta ou tenant enviados pelo iframe.
+
 ## Segredos e serviços externos
 
 1. **[2026-08-26] Infisical é a fonte de verdade dos segredos**
