@@ -9,6 +9,7 @@ import { useAlert } from 'dashboard/composables';
 const MESSAGE_READY = 'ts-products.crm.ready.v1';
 const MESSAGE_SESSION = 'ts-products.crm.embed.v1';
 const MESSAGE_OPEN_CONVERSATION = 'ts-products.crm.open-conversation.v1';
+const MESSAGE_OPEN_CONTACT = 'ts-products.crm.open-contact.v1';
 
 const route = useRoute();
 const router = useRouter();
@@ -84,6 +85,20 @@ async function handleFrameMessage(event) {
       params: {
         accountId: route.params.accountId,
         conversation_id: event.data.conversationId,
+      },
+    });
+    return;
+  }
+
+  if (
+    event.data.type === MESSAGE_OPEN_CONTACT &&
+    typeof event.data.contactId === 'string'
+  ) {
+    await router.push({
+      name: 'contacts_edit',
+      params: {
+        accountId: route.params.accountId,
+        contactId: event.data.contactId,
       },
     });
   }
