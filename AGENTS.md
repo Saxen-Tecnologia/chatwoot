@@ -146,3 +146,9 @@ Practical checklist for any change impacting core logic or public APIs
 - Read and curate `.codex/napkin.md` at the beginning of every session. Keep it
   as a concise recurring runbook with dated `Do instead:` actions, not a
   chronological activity log.
+
+## Project Napkin
+
+- Always apply the global use rules from Napkin.
+- Record only learnings and decisions relevant to this repository in this Napkin.
+- Entries must be written in Brazilian Portuguese (pt-BR).

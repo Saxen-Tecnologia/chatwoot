@@ -23,16 +23,19 @@
 
 ## Segredos e serviços externos
 
-1. **[2026-08-26] Infisical é a fonte de verdade dos segredos**
+1. **[2026-09-01] Configurar SMTP antes de convidar agentes**
+   Do instead: no Chatwoot hospedado, manter `MAILER_SENDER_EMAIL` e as variáveis `SMTP_*` em ambos os processos web e Sidekiq, com a senha somente no Infisical; sem `SMTP_ADDRESS`, o container tenta `sendmail` local e convites, confirmações e redefinições de senha não chegam. Depois de alterar, reiniciar o serviço, enviar um teste e só então reenviar o convite.
+
+2. **[2026-08-26] Infisical é a fonte de verdade dos segredos**
    Do instead: manter os valores no projeto Infisical e ambiente corretos, injetar com `infisical run` ou exportar diretamente para `.env.local`; nunca imprimir, documentar ou versionar valores.
 
-2. **[2026-08-26] Manter `.env.local` local e restrito**
+3. **[2026-08-26] Manter `.env.local` local e restrito**
    Do instead: confirmar que `.env.local` está ignorado, com permissão `600`, e reconstruí-lo pelo Infisical após perda da estação.
 
-3. **[2026-08-26] Tratar reconexão UAZAPI como troca de identidade**
+4. **[2026-08-26] Tratar reconexão UAZAPI como troca de identidade**
    Do instead: depois de reconectar a conta gratuita, sincronizar o token no Infisical e n8n, restaurar o webhook, verificar ID/`owner` e atualizar o mapeamento Redmoto somente pela RPC auditada antes do smoke test.
 
-4. **[2026-08-26] MCP é global; configuração e autorização são locais**
+5. **[2026-08-26] MCP é global; configuração e autorização são locais**
    Do instead: reutilizar instalações globais dos MCPs, mas manter endpoints, projeto, ambiente, OAuth e nomes de variáveis específicos em cada repositório.
 
 ## Guardrails do domínio
